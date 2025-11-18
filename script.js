@@ -1,8 +1,8 @@
 // --- FACTEURS D'ÉMISSIONS ---
 // utilisation (par heure)
-const em_tel = 0.04;      // kg CO2 / h
-const em_ordi = 0.05;     // kg CO2 / h
-const em_tablette = 0.08; // kg CO2 / h
+const em_tel = 0.04;
+const em_ordi = 0.05;
+const em_tablette = 0.08;
 
 // fabrication totale (kg CO2)
 const emf_tel = 80;
@@ -15,20 +15,21 @@ const em_ADSL  = 0.05;
 const em_4G    = 0.10;
 const em_5G    = 0.15;
 
-// lire le réseau choisi pour un appareil
-function lireReseau(name) {
-    let r = document.querySelector(`input[name="${name}"]:checked`);
-    if (!r) return null;
-    return r.value;
+// récupère une valeur -> renvoie 0 si vide
+function lire(id) {
+    let v = parseFloat(document.getElementById(id).value);
+    return isNaN(v) ? 0 : v;
 }
 
-// convertir réseau → facteur CO2
-function facteurReseau(type) {
-    switch(type) {
+// lire réseau -> renvoie 0 si pas choisi
+function lireReseau(name) {
+    let r = document.querySelector(`input[name="${name}"]:checked`);
+    if (!r) return 0; 
+    switch (r.value) {
         case "fibre": return em_fibre;
-        case "ADSL": return em_ADSL;
-        case "4G": return em_4G;
-        case "5G": return em_5G;
+        case "ADSL":  return em_ADSL;
+        case "4G":    return em_4G;
+        case "5G":    return em_5G;
         default: return 0;
     }
 }
@@ -36,13 +37,13 @@ function facteurReseau(type) {
 function traiterValeur() {
 
     // ---------- TELEPHONE ----------
-    let tps_tel = parseFloat(document.getElementById("tps_téléphone").value);
-    let vie_tel = parseFloat(document.getElementById("duré_vie_tel").value);
-    let go_tel = parseFloat(document.getElementById("go_utilisé_tel").value);
-    let reseau_tel = lireReseau("reseau_tel");
-    let facteur_tel = facteurReseau(reseau_tel);
+    let tps_tel = lire("tps_téléphone");
+    let vie_tel = lire("duré_vie_tel");
+    let go_tel = lire("go_utilisé_tel");
 
-    let fab_tel_annuelle = emf_tel / vie_tel;
+    let facteur_tel = lireReseau("reseau_tel");
+
+    let fab_tel_annuelle = vie_tel > 0 ? (emf_tel / vie_tel) : 0;
     let utilisation_tel = tps_tel * em_tel * 365;
     let reseau_tel_em = go_tel * 12 * facteur_tel;
 
@@ -50,13 +51,13 @@ function traiterValeur() {
 
 
     // ---------- ORDINATEUR ----------
-    let tps_ordi = parseFloat(document.getElementById("tps_ordinateur").value);
-    let vie_ordi = parseFloat(document.getElementById("duré_vie_ordi").value);
-    let go_ordi = parseFloat(document.getElementById("go_utilisé_ordi").value);
-    let reseau_ordi = lireReseau("reseau_ordi");
-    let facteur_ordi = facteurReseau(reseau_ordi);
+    let tps_ordi = lire("tps_ordinateur");
+    let vie_ordi = lire("duré_vie_ordi");
+    let go_ordi = lire("go_utilisé_ordi");
 
-    let fab_ordi_annuelle = emf_ordi / vie_ordi;
+    let facteur_ordi = lireReseau("reseau_ordi");
+
+    let fab_ordi_annuelle = vie_ordi > 0 ? (emf_ordi / vie_ordi) : 0;
     let utilisation_ordi = tps_ordi * em_ordi * 365;
     let reseau_ordi_em = go_ordi * 12 * facteur_ordi;
 
@@ -64,13 +65,13 @@ function traiterValeur() {
 
 
     // ---------- TABLETTE ----------
-    let tps_tab = parseFloat(document.getElementById("tps_tablette").value);
-    let vie_tab = parseFloat(document.getElementById("duré_vie_tablette").value);
-    let go_tab = parseFloat(document.getElementById("go_utilisé_tablette").value);
-    let reseau_tab = lireReseau("reseau_tablette");
-    let facteur_tab = facteurReseau(reseau_tab);
+    let tps_tab = lire("tps_tablette");
+    let vie_tab = lire("duré_vie_tablette");
+    let go_tab = lire("go_utilisé_tablette");
 
-    let fab_tab_annuelle = emf_tablette / vie_tab;
+    let facteur_tab = lireReseau("reseau_tablette");
+
+    let fab_tab_annuelle = vie_tab > 0 ? (emf_tablette / vie_tab) : 0;
     let utilisation_tab = tps_tab * em_tablette * 365;
     let reseau_tab_em = go_tab * 12 * facteur_tab;
 
