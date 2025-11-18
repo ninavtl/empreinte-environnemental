@@ -10,9 +10,9 @@
   
   <h1> CALCULER VOTRE EMPREINTE ENVIRONNEMENTAL NUMERIQUE </h1>
   
- <p> TELEPHONE
+ <pre> TELEPHONE
    
-   <label for="tps_téléphone">temps passé sur votre téléphone par jour (en heure): </label>
+  <pe> <label for="tps_téléphone">temps passé sur votre téléphone par jour (en heure): </label>
 <input
   type="number"
   id="tps_téléphone"
@@ -20,11 +20,11 @@
   required
   minlength="1"
   maxlength="8"
-  size="10" />
+  size="10" /> </pe>
 
    
   
-    <label> type de réseaux utilisé principalement :
+   <pe> <label> type de réseaux utilisé principalement :
         <input type="radio" id="4G" name="4G">
         4G
     </label><br>
@@ -39,33 +39,29 @@
         <label>
         <input type="radio" id="ADSL" name="ADSL">
         ADSL
-    </label>
+    </label> </pe>
 
-  <label for="stockage_cloud_tel">stockage cloud utilisé (en Go) : </label>
-
+ <pe> <label for="stockage_cloud_tel">stockage cloud utilisé (en Go) : </label>
 <input
   type="number"
   id="stockage_cloud_tel"
   name="stockage_cloud_tel"
   required
-  size="10" /> 
+  size="10" /> </pe>
   
-  <label for="duré_vie_tel"> durée de vie moyenne de vos téléphones : </label>
-
+<pe>  <label for="duré_vie_tel"> durée de vie moyenne de vos téléphones : </label>
 <input
   type="number"
   id="duré_vie_tel"
   name="duré_vie_tel"
   required
-  size="10" />
+  size="10" /> </pe>
 
-</p> 
+</pre> 
 
-<p> ORDINATEUR
+<pre> ORDINATEUR
   
-
-  <label for="tps_ordinateur">temps passé sur votre ordinateur par jour (en heure): </label>
-
+ <pe> <label for="tps_ordinateur">temps passé sur votre ordinateur par jour (en heure): </label>
 <input
   type="number"
   id="tps_ordinateur"
@@ -73,10 +69,9 @@
   required
   minlength="1"
   maxlength="8"
-  size="10" />
+  size="10" /> </pre>
 
-  <h2>type de réseaux utilisé principalement :</h2>
-    <label>
+   <pe> <label>type de réseaux utilisé principalement :
         <input type="radio" id="4G" name="4G">
         4G
     </label><br>
@@ -91,30 +86,28 @@
         <label>
         <input type="radio" id="ADSL" name="ADSL">
         ADSL
-    </label>
+    </label> <pe>
 
-  <label for="stockage_cloud_ordi">stockage cloud utilisé (en Go) : </label>
-
+ <pe> <label for="stockage_cloud_ordi">stockage cloud utilisé (en Go) : </label>
 <input
   type="number"
   id="stockage_cloud_ordi"
   name="stockage_cloud_ordi"
   required
-  size="10" />
+  size="10" /> </pe>
 
-  <label for="duré_vie_ordi"> durée de vie moyenne de vos ordinateurs : </label>
-
+ <pe> <label for="duré_vie_ordi"> durée de vie moyenne de vos ordinateurs : </label>
 <input
   type="number"
   id="duré_vie_ordi"
   name="duré_vie_ordi"
   required
-  size="10" />
-</p>
+  size="10" /> </pe>
+</pre>
 
-  <p>TABLETTES
-   <label for="tps_tablette">temps passé sur votre tablette par jour (en heure): </label>
-
+  <pre>TABLETTES
+    
+  <pe> <label for="tps_tablette">temps passé sur votre tablette par jour (en heure): </label>
 <input
   type="number"
   id="tps_tablette"
@@ -122,10 +115,9 @@
   required
   minlength="1"
   maxlength="8"
-  size="10" />
-
-  <h2>type de réseaux utilisé principalement :</h2>
-    <label>
+  size="10" /> </pe>
+    
+    <pe> <label>type de réseaux utilisé principalement :
         <input type="radio" id="4G" name="4G">
         4G
     </label><br>
@@ -140,28 +132,27 @@
         <label>
         <input type="radio" id="ADSL" name="ADSL">
         ADSL
-    </label>
+    </label> </pe>
 
 
-<label for="stockage_cloud_tablette">stockage cloud utilisé (en Go) : </label>
-
+<pe> <label for="stockage_cloud_tablette">stockage cloud utilisé (en Go) : </label>
 <input
   type="number"
   id="stockage_cloud_tablette"
   name="stockage_cloud_tablette"
   required
-  size="10" />
+  size="10" /> </pe>
 
-  <label for="duré_vie_tablette"> durée de vie moyenne de vos tablettes : </label>
-
+    
+ <pe> <label for="duré_vie_tablette"> durée de vie moyenne de vos tablettes : </label>
 <input
   type="number"
   id="duré_vie_tablette"
   name="duré_vie_tablette"
   required
-  size="10" />
+  size="10" /> </pe>
 
-   </p> 
+   </pre> 
 
   <button onclick="traiterValeur()">Calculer</button>
     <p id="affichage"></p>
